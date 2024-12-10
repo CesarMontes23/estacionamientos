@@ -1,0 +1,28 @@
+<!-- templates/services/service_list.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Servicios</title>
+</head>
+<body>
+    <h1>Lista de Servicios</h1>
+    
+    <!-- Comienza el bucle para mostrar los servicios -->
+    <ul>
+        {% for service in service_list %}
+            <li>
+                <h2>{{ service.title }}</h2>
+                <h3>{{ service.subtitle }}</h3>
+                <p>{{ service.content }}</p>
+                {% if service.image %}
+                    <img src="{{ service.image.url }}" alt="Imagen de {{ service.title }}" />
+                {% endif %}
+                <p><strong>Creado:</strong> {{ service.created }}</p>
+                <p><strong>Actualizado:</strong> {{ service.updated }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
