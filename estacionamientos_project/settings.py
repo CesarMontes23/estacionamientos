@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -76,14 +75,14 @@ WSGI_APPLICATION = 'estacionamientos_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': os.environ.get('Estacionamientos', 'Estacionamientos'),  # Cambia al nombre de tu base de datos
+        'ENGINE': 'mssql',
+        'NAME': 'Estacionamientos',  # Cambia al nombre de tu base de datos
         'USER': '',  # Tu usuario de SQL Server
         'PASSWORD': '',  # La contraseña del usuario
-        'HOST':  os.environ.get('CESARPC', 'CESARPC'),  # Dirección del servidor
+        'HOST':  'CESARPC',  # Dirección del servidor
         'PORT': '',  # Puerto estándar de SQL Server
         'OPTIONS': {
-            'driver': 'ODBC Driver 18 for SQL Server',  # Asegúrate de tener este driver instalado
+            'driver': 'ODBC Driver 17 for SQL Server',  # Asegúrate de tener este driver instalado
             'extra_params': 'TrustServerCertificate=yes;'
         },
     }
@@ -134,7 +133,6 @@ STATIC_URL = '/static/'
 #]
 
 # Ruta donde se recopilarán los archivos estáticos
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
