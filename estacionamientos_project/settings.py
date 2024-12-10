@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'estacionamientos_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'Estacionamientos',  # Cambia al nombre de tu base de datos
+        'NAME': os.environ.get('DB_NAME', 'Estacionamientos'),  # Cambia al nombre de tu base de datos
         'USER': '',  # Tu usuario de SQL Server
         'PASSWORD': '',  # La contraseña del usuario
-        'HOST': 'CESARPC',  # Dirección del servidor
+        'HOST':  os.environ.get('DB_HOST', 'CESARPC'),  # Dirección del servidor
         'PORT': '',  # Puerto estándar de SQL Server
         'OPTIONS': {
             'driver': 'ODBC Driver 18 for SQL Server',  # Asegúrate de tener este driver instalado
